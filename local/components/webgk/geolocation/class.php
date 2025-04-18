@@ -37,8 +37,8 @@ class Geolocation extends \CBitrixComponent implements Controllerable
 
     public function getCitiesList()
     {
-        $dataclass = (new \Webgk\Helpers\HighloadBlock('geolocation_cities'))->getEntityDataClass();
-        $availableCities = $dataclass->GetList()->fetchAll();
+        $dataclass = (new \Webgk\Helper\HighloadBlock('geolocation_cities'))->getEntityDataClass();
+        $availableCities = $dataclass::GetList()->fetchAll();
         return $availableCities;
     }
 
@@ -52,12 +52,21 @@ class Geolocation extends \CBitrixComponent implements Controllerable
         }
     }
 
+    public function setCityAction(string $cityName)
+    {
+        $_SESSION['WEBGK']['CITY'] = $cityName;
+    }
+
     public function executeComponent()
     {
         $citiesList = $this->getCitiesList();
         $this->arResult['CITIES_LIST'] = $citiesList;
         $this->arResult['CURRENT_CITY'] = $_SESSION['WEBGK']['GEO_CITY'] ?? '';
-        $this->arResult['SUGGESTED_CITY'] = $this->getCity()['RESULT'];
+
+        if (empty($this->arResult['CURRENT_CITY'])) {
+            $this->arResult['SUGGESTED_CITY'] = $this->getCity()['RESULT'];
+        }
+
         $this->includeComponentTemplate();
     }
 }

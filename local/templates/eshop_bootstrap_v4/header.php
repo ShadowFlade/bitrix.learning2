@@ -11,6 +11,7 @@ if (isset($_GET["theme"]) && in_array($_GET["theme"], array("blue", "green", "ye
 $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "green", SITE_ID);
 
 $curPage = $APPLICATION->GetCurPage(true);
+\Webgk\Helper\Site::handelSetCity();
 
 ?><!DOCTYPE html>
 <html xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>">
