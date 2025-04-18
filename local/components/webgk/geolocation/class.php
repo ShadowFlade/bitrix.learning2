@@ -52,19 +52,14 @@ class Geolocation extends \CBitrixComponent implements Controllerable
         }
     }
 
-    public function setCityAction(string $cityName)
-    {
-        $_SESSION['WEBGK']['CITY'] = $cityName;
-    }
-
     public function executeComponent()
     {
-        $citiesList = $this->getCitiesList();
-        $this->arResult['CITIES_LIST'] = $citiesList;
         $this->arResult['CURRENT_CITY'] = $_SESSION['WEBGK']['GEO_CITY'] ?? '';
 
         if (empty($this->arResult['CURRENT_CITY'])) {
             $this->arResult['SUGGESTED_CITY'] = $this->getCity()['RESULT'];
+            $citiesList = $this->getCitiesList();
+            $this->arResult['CITIES_LIST'] = $citiesList;
         }
 
         $this->includeComponentTemplate();

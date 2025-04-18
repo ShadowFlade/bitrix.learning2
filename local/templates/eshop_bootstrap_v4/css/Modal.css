@@ -1,0 +1,122 @@
+.modal-webgk {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 1;
+    pointer-events: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    z-index: 1000;
+    visibility: hidden;
+    font-family: "TT Firs Neue", sans-serif;
+    font-size: 1.6rem;
+    background: rgba(36, 36, 42, 0.4);
+}
+
+.modal-webgk__wrapper {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    width: 100%;
+    min-height: 100%;
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    -webkit-transition: all 0.05s linear;
+    transition: all 0.05s linear;
+}
+
+.modal-webgk__body {
+    position: relative;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    max-width: 100%;
+    -webkit-transition: opacity 0.2s ease 0s, -webkit-transform 0.2s ease 0s;
+    transition: opacity 0.2s ease 0s, -webkit-transform 0.2s ease 0s;
+    transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
+    transition: transform 0.2s ease 0s, opacity 0.2s ease 0s, -webkit-transform 0.2s ease 0s;
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.1rem;
+    scrollbar-color: #fff #c1c1c3;
+}
+
+.modal-webgk__close {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    z-index: 2;
+    -webkit-transition: top 0.3s, right 0.3s;
+    transition: top 0.3s, right 0.3s;
+}
+
+.modal-webgk--active {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.modal-webgk--active .modal-webgk__body {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.modal-webgk__header {
+    display:flex;
+    align-items: center;
+}

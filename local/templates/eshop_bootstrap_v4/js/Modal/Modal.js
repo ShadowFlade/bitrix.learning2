@@ -68,10 +68,6 @@ class Modal {
         // if (!webgkScrollbar.isHidden) {
         //     webgkScrollbar.hide();
         // }
-
-        //это нужно если у нас модалка в футере находится
-        document.querySelector('#footer').style['z-index'] = '4';
-
         let pageYStart;
 
         if (this.options.canUserClose) {
@@ -98,7 +94,6 @@ class Modal {
      */
     close() {
         //это нужно если у нас модалка в футере находится
-        document.querySelector('#footer').style['z-index'] = '2';
 
         if (webgkScrollbar && webgkScrollbar.isHidden) {
             webgkScrollbar.show();

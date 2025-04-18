@@ -12,6 +12,9 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "gr
 
 $curPage = $APPLICATION->GetCurPage(true);
 \Webgk\Helper\Site::handelSetCity();
+$asset = \Bitrix\Main\Page\Asset::getInstance();
+$asset->addJs(SITE_TEMPLATE_PATH . '/js/Scrollbar.js');
+$asset->addJs(SITE_TEMPLATE_PATH . '/js/common.js');
 
 ?><!DOCTYPE html>
 <html xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>">
