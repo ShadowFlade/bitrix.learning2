@@ -15,6 +15,8 @@ $curPage = $APPLICATION->GetCurPage(true);
 $asset = \Bitrix\Main\Page\Asset::getInstance();
 $asset->addJs(SITE_TEMPLATE_PATH . '/js/Scrollbar.js');
 $asset->addJs(SITE_TEMPLATE_PATH . '/js/common.js');
+$asset->addCss(SITE_TEMPLATE_PATH . '/css/Modal.css');
+
 
 ?><!DOCTYPE html>
 <html xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>">
@@ -36,37 +38,8 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/common.js');
 	<header class="bx-header">
 		<div class="bx-header-section container">
 			<!--region bx-header-->
-			<div class="row pt-0 pt-md-3 mb-3 align-items-center" style="position: relative;">
+			<div class="row pt-0 pt-md-3 align-items-center" style="position: relative;">
 				<div class="d-block d-md-none bx-menu-button-mobile" data-role='bx-menu-button-mobile-position'></div>
-				<div class="col-12 col-md-auto bx-header-logo">
-					<a class="bx-logo-block d-none d-md-block" href="<?=SITE_DIR?>">
-						<?$APPLICATION->IncludeComponent(
-							"bitrix:main.include",
-							"",
-							array(
-								"AREA_FILE_SHOW" => "file",
-								"PATH" => SITE_DIR."include/company_logo.php"),
-							false
-						);?>
-					</a>
-                    <?$APPLICATION->IncludeComponent(
-                        "webgk:geolocation",
-                        "",
-                        array()
-                    );?>
-					<a class="bx-logo-block d-block d-md-none text-center" href="<?=SITE_DIR?>">
-						<?$APPLICATION->IncludeComponent(
-							"bitrix:main.include",
-							"",
-							array(
-								"AREA_FILE_SHOW" => "file",
-								"PATH" => SITE_DIR."include/company_logo_mobile.php"
-							),
-							false
-						);?>
-					</a>
-				</div>
-
 				<div class="col-auto d-none d-md-block bx-header-personal">
 					<?$APPLICATION->IncludeComponent(
 						"bitrix:sale.basket.basket.line",
@@ -151,6 +124,11 @@ $asset->addJs(SITE_TEMPLATE_PATH . '/js/common.js');
 						false
 					);?>
 				</div>
+                <?$APPLICATION->IncludeComponent(
+                    "webgk:geolocation",
+                    "",
+                    array()
+                );?>
 			</div>
 			<!--endregion-->
 

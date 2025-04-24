@@ -93,8 +93,6 @@ class Modal {
      * Закрываем модалку
      */
     close() {
-        //это нужно если у нас модалка в футере находится
-
         if (webgkScrollbar && webgkScrollbar.isHidden) {
             webgkScrollbar.show();
         }

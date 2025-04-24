@@ -1,4 +1,25 @@
 .modal-webgk--geolocation {
     position: absolute;
-    background: none;
+    top: 100%;
+    width: max-content;
+    height: fit-content;
+    background-color: white;
+    padding: .5rem 1rem;
+    font-size: 19px;
+    border: 1px solid green;
+}
+
+.geolocation__answers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.geolocation__answer {
+    cursor: pointer;
+}
+
+.geolocation {
+    position: relative;
 }

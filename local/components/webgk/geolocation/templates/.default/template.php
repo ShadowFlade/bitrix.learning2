@@ -13,18 +13,24 @@
 $this->setFrameMode(true);
 $asset = \Bitrix\Main\Page\Asset::getInstance();
 $asset->addJs(SITE_TEMPLATE_PATH . '/js/Modal/Modal.js');
-$asset->addCss(SITE_TEMPLATE_PATH . '/css/Modal.css');
+$asset->addCss(SITE_TEMPLATE_PATH . '/css/modals/geolocation.css');
 
 ?>
 <div class="geolocation">
     <div class="geolocation__wrapper">
         <p class="geolocation__cur-city"><?= $arResult['CURRENT_CITY'] ?></p>
-        <? if (empty($arResult['CURRENT_CITY'])):
+        <?
+        if (empty($arResult['CURRENT_CITY'])):
             $suggCity = $arResult['SUGGESTED_CITY'];
             $APPLICATION->IncludeFile(
                 SITE_DIR . '/include/modals/geolocation.php',
-                ['SUGGESTED_CITY' => $arResult['SUGGESTED_CITY']]
+                [
+                    'SUGGESTED_CITY' => $arResult['SUGGESTED_CITY'],
+                    'CITIES_LIST' => $arResult['CITIES_LIST'],
+                    'SET_CITY_PARAM' => $arResult['SET_CITY_PARAM'],
+                ]
             );
-        endif ?>
+        endif
+        ?>
     </div>
 </div>
