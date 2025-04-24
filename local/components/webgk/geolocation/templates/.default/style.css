@@ -1,6 +1,6 @@
 .modal-webgk--geolocation {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 100px);
     width: max-content;
     height: fit-content;
     background-color: white;
@@ -22,4 +22,5 @@
 
 .geolocation {
     position: relative;
+    margin-right: auto;
 }

@@ -63,7 +63,12 @@ $asset->addCss(SITE_TEMPLATE_PATH . '/css/Modal.css');
 
 				<div class="col bx-header-contact">
 					<div class="d-flex align-items-center justify-content-between justify-content-md-center flex-column flex-sm-row flex-md-column flex-lg-row">
-						<div class="p-lg-3 p-1">
+                        <?$APPLICATION->IncludeComponent(
+                            "webgk:geolocation",
+                            "",
+                            array()
+                        );?>
+                        <div class="p-lg-3 p-1">
 							<div class="bx-header-phone-block">
 								<i class="bx-header-phone-icon"></i>
 								<span class="bx-header-phone-number">
@@ -124,11 +129,7 @@ $asset->addCss(SITE_TEMPLATE_PATH . '/css/Modal.css');
 						false
 					);?>
 				</div>
-                <?$APPLICATION->IncludeComponent(
-                    "webgk:geolocation",
-                    "",
-                    array()
-                );?>
+
 			</div>
 			<!--endregion-->
 
