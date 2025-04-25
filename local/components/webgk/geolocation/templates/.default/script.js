@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+
     const geoModalEl = document.querySelector('.js-modal--geolocation');
     if (!geoModalEl) {
         return;
     }
     const geoModal = new Modal(geoModalEl);
-    geoModal.open();
+    const geolocationCurCity = document.querySelector('.js-geolocation__cur-city');
+    geolocationCurCity.addEventListener('click', (e) => {
+        e.preventDefault();
+        geoModal.open();
+    })
+    if (geolocationCurCity.dataset.showModal == 'yes') {
+        geoModal.open();
+    }
     const noButtonEl = document.querySelector('.js-geolocation__no');
     noButtonEl.addEventListener('click', handleNo);
 });
@@ -48,3 +57,4 @@ function buildCitiesList(citiesScene, cities) {
     })
     citiesScene.innerHTML = html;
 }
+

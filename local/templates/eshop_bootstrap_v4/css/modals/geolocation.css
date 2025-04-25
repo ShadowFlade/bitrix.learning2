@@ -5,3 +5,21 @@
 .geolocation__cur-city {
     margin-bottom :0;
 }
+.geolocation__question {
+    text-align: center;
+}
+.geolocation__answers {
+    gap: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+.geolocation__answer {
+    appearance: none;
+    color: var(--theme-b-link);
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+
+}

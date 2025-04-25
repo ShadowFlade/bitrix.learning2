@@ -18,19 +18,20 @@ $asset->addCss(SITE_TEMPLATE_PATH . '/css/modals/geolocation.css');
 ?>
 <div class="geolocation">
     <div class="geolocation__wrapper">
-        <p class="geolocation__cur-city"><?= $arResult['CURRENT_CITY'] ?></p>
+        <a href="" class="geolocation__cur-city js-geolocation__cur-city js-modal-trigger" data-show-modal="<?=empty($arResult['CURRENT_CITY']) ? 'yes' : 'no'?>">
+            <?= $arResult['CURRENT_CITY'] ?>
+        </a>
         <?
-        if (empty($arResult['CURRENT_CITY'])):
-            $suggCity = $arResult['SUGGESTED_CITY'];
-            $APPLICATION->IncludeFile(
-                SITE_DIR . '/include/modals/geolocation.php',
-                [
-                    'SUGGESTED_CITY' => $arResult['SUGGESTED_CITY'],
-                    'CITIES_LIST' => $arResult['CITIES_LIST'],
-                    'SET_CITY_PARAM' => $arResult['SET_CITY_PARAM'],
-                ]
-            );
-        endif
+        $suggCity = $arResult['SUGGESTED_CITY'];
+        $APPLICATION->IncludeFile(
+            SITE_DIR . '/include/modals/geolocation.php',
+            [
+                'SUGGESTED_CITY' => $arResult['SUGGESTED_CITY'],
+                'CITIES_LIST' => $arResult['CITIES_LIST'],
+                'SET_CITY_PARAM' => $arResult['SET_CITY_PARAM'],
+                'CURRENT_CITY' => $arResult['CURRENT_CITY'],
+            ]
+        );
         ?>
     </div>
 </div>

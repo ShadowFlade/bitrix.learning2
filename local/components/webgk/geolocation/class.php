@@ -42,11 +42,6 @@ class Geolocation extends \CBitrixComponent implements Controllerable
     {
         $dataclass = (new \Webgk\Helper\HighloadBlock('geolocation_cities'))->getEntityDataClass();
         $availableCities = $dataclass::GetList()->fetchAll();
-        \Bitrix\Main\Diag\Debug::writeToFile(
-            $availableCities,
-            date("d.m.Y H:i:s"),
-            'local/cities.log'
-        );
         return $availableCities;
     }
 
@@ -62,20 +57,20 @@ class Geolocation extends \CBitrixComponent implements Controllerable
 
     public function executeComponent()
     {
+        \Bitrix\Main\Diag\Debug::writeToFile(
+            $_SESSION['WEBGK']['GEO_CITY'],
+            date("d.m.Y H:i:s"),
+            'local/geo.log'
+        );
         $this->arResult['CURRENT_CITY'] = $_SESSION['WEBGK']['GEO_CITY'] ?? '';
 
 
         if (empty($this->arResult['CURRENT_CITY'])) {
             $this->arResult['SUGGESTED_CITY'] = $this->getCity()['RESULT'];
-            $citiesList = $this->getCitiesList();
-            \Bitrix\Main\Diag\Debug::writeToFile(
-                $citiesList,
-                date("d.m.Y H:i:s"),
-                'local/local.log'
-            );
-            $this->arResult['CITIES_LIST'] = $citiesList;
-            $this->arResult['SET_CITY_PARAM'] = 'set_city';
         }
+        $citiesList = $this->getCitiesList();
+        $this->arResult['CITIES_LIST'] = $citiesList;
+        $this->arResult['SET_CITY_PARAM'] = 'set_city';
 
         $this->includeComponentTemplate();
     }

@@ -9,13 +9,6 @@
     border: 1px solid green;
 }
 
-.geolocation__answers {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-}
-
 .geolocation__answer {
     cursor: pointer;
 }

@@ -1,5 +1,5 @@
 <?php
-$suggCity = $arParams['SUGGESTED_CITY'];
+$suggCity = $arParams['SUGGESTED_CITY'] ?? $arParams['CURRENT_CITY'];
 $linkSetCity = $APPLICATION->GetCurPage() . "?set_city=$suggCity";
 ?>
 <div class="geolocation__suggest modal-webgk modal-webgk--geolocation js-modal js-modal--geolocation"
@@ -16,7 +16,7 @@ $linkSetCity = $APPLICATION->GetCurPage() . "?set_city=$suggCity";
                 <div class="geolocation__answers">
                     <a href="<?= $linkSetCity ?>"
                        class="geolocation__answer geolocation__answer--yes js-geolocation__yes">Да</a>
-                    <button class="geolocation__answer geolocation__answer--no geolocation__no js-geolocation__no">Нет
+                    <button class="geolocation__answer geolocation__answer--no geolocation__no js-geolocation__no">Выбрать другой
                     </button>
                 </div>
             </div>

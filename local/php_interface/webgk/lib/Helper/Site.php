@@ -19,8 +19,11 @@ class Site
 
         $_SESSION['WEBGK']['GEO_CITY'] = $city;
         $dataclass = (new \Webgk\Helper\HighloadBlock('geolocation_cities'))->getEntityDataClass();
-        $dataclass::Add(['UF_NAME' => $city]);
+        $count = $dataclass::getList(['filter' => ['UF_NAME' => $city]])->getSelectedRowsCount();
+        if ($count == 0) {
+            $dataclass::Add(['UF_NAME' => $city]);
+        }
 
-        Header('Location:' . 'http://' .  $_SERVER['HTTP_HOST'] . str_replace("set_city=$city", '', $_SERVER['REQUEST_URI']));
+        Header('Location:' . 'http://' . $_SERVER['HTTP_HOST'] . str_replace("set_city=$city", '', $_SERVER['REQUEST_URI']));
     }
 }

@@ -150,6 +150,7 @@ class Modal {
         if (e.target.closest([`[data-modal-id="${this.id}"]`])) {
             return;
         }
+
         const isClose = e.target.closest(this.options.closeSelector);
         const isOpenButton = e.target.closest('.' + this.options.triggerClass);
 
@@ -197,6 +198,10 @@ class Modal {
             ...initialOptions,
             ...options,
         };
+    }
+
+    isOpen() {
+        return this.element.classList.contains(this.options.modalActiveClass)
     }
 
 }
