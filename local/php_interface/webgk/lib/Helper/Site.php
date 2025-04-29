@@ -23,6 +23,8 @@ class Site
         if ($count == 0) {
             $dataclass::Add(['UF_NAME' => $city]);
         }
+//        \Bitrix\Main\Service\GeoIp\Manager::getCityName();
+//        \Bitrix\Main\Service\GeoIp\Manager::getCityName();
 
         Header('Location:' . 'http://' . $_SERVER['HTTP_HOST'] . str_replace("set_city=$city", '', $_SERVER['REQUEST_URI']));
     }

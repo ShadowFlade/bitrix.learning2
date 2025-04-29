@@ -22,22 +22,6 @@ class Geolocation extends \CBitrixComponent implements Controllerable
         ];
     }
 
-    public function getCityByIP()
-    {
-        $handle = curl_init();
-        $ip = $_SERVER['REMOTE_ADDR'];
-        curl_setopt($handle, CURLOPT_URL, "http://ipwho.is/$ip");
-        curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
-        $resultJson = curl_exec($handle);
-        $result = json_decode($resultJson, true);
-
-        if (empty($result['city'])) {
-            return ['RESULT' => '', 'SUCCESS' => false];
-        } else {
-            return ['RESULT' => $result['city'], 'SUCCESS' => true];
-        }
-    }
-
     public function getCitiesList()
     {
         $dataclass = (new \Webgk\Helper\HighloadBlock('geolocation_cities'))->getEntityDataClass();
@@ -48,8 +32,8 @@ class Geolocation extends \CBitrixComponent implements Controllerable
 
     public function getCity()
     {
-        if (!empty($city = $this->getCityByIP())) {
-            return $city;
+        if (!empty($city = \Webgk\Service\Geolocation::getCityName())) {
+            return ['RESULT' => $city];
         } else {
             return ['SUCCESS' => false];
         }
@@ -57,11 +41,6 @@ class Geolocation extends \CBitrixComponent implements Controllerable
 
     public function executeComponent()
     {
-        \Bitrix\Main\Diag\Debug::writeToFile(
-            $_SESSION['WEBGK']['GEO_CITY'],
-            date("d.m.Y H:i:s"),
-            'local/geo.log'
-        );
         $this->arResult['CURRENT_CITY'] = $_SESSION['WEBGK']['GEO_CITY'] ?? '';
 
 
